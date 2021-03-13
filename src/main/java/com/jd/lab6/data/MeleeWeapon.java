@@ -1,11 +1,14 @@
 package com.jd.lab6.data;
+
+import java.io.Serializable;
+
 /**
  * @author Пименов Данила, P3130
  * Перечисление, описывающее доступные варианты оружия
  * POWER_SWORD, CHAIN_AXE, POWER_BLADE, POWER_FIST;
  * Содержит парсер строки в оружие
  */
-public enum MeleeWeapon {
+public enum MeleeWeapon implements Serializable {
     POWER_SWORD,
     CHAIN_AXE,
     POWER_BLADE,

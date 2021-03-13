@@ -1,5 +1,6 @@
 package com.jd.lab6.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Stack;
  * Содержит переопределённую логику toString, hasCode, equals, а также набор станадратных геттеров и сеттеров.
  * Реализует интерфейс Comparable.
  */
-public class SpaceMarine implements Comparable<SpaceMarine> {
+public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
     private Long id;
     private String name;
     private com.jd.lab6.data.Coordinates coordinates;

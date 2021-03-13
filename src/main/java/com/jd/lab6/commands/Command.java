@@ -2,6 +2,7 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -14,7 +15,7 @@ import java.util.TreeSet;
  * target - коллекция, с которой взаимодействует команда
  * curCMD - объект окружения, вызвавшего команду
  */
-public abstract class Command {
+public abstract class Command implements Serializable {
     ArrayList<String> arguments;
     TreeSet<SpaceMarine> target;
     Cmd curCMD;

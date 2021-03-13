@@ -1,5 +1,6 @@
 package com.jd.lab6.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Objects;
  * Класс, описывающий "часть"
  * Содержит переопределённую логику toString, hasCode, equals, а также набор станадратных геттеров и сеттеров
  */
-public class Chapter {
+public class Chapter implements Serializable {
     private String name;
     private String parentLegion;
 

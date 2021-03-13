@@ -1,11 +1,13 @@
 package com.jd.lab6.data;
 
+import java.io.Serializable;
+
 /**
  * @author Пименов Данила, P3130
  * Класс, описывающий координаты.
  * Реализует интерфейс Comparable.
  */
-public class Coordinates implements Comparable<Coordinates> {
+public class Coordinates implements Comparable<Coordinates>, Serializable {
     private long x;
     private Float y;
 
