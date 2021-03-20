@@ -5,6 +5,7 @@ import com.jd.lab6.data.SpaceMarine;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.Stack;
 import java.util.TreeSet;
 
@@ -13,18 +14,19 @@ import java.util.TreeSet;
  * Команда, исполняющая сторонний скрипт.
  * Содержит в себе стэк с именами уже запущенных "сверху" скриптов.
  */
-public class ExecuteScriptCommand extends  Command {
+public class ExecuteScriptCommand extends  Command implements Serializable {
     private static Stack<String> executedScripts;
+    private static final long serialVersionUID = 3L;
 
-    public ExecuteScriptCommand(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
-        super(args, trg, cmd);
+    public ExecuteScriptCommand(String[] args, TreeSet<SpaceMarine> trg) {
+        super(args, trg);
         if (executedScripts == null)
             executedScripts = new Stack<>();
     }
 
     @Override
     public void execute() {
-        InputStream oldIn = System.in;
+       /* InputStream oldIn = System.in;
         if (arguments.size() < 2) {
             System.out.println("Не указано имя скрипта");
             return;
@@ -45,5 +47,5 @@ public class ExecuteScriptCommand extends  Command {
             System.out.println("Ошибка загрузки:" + e.getMessage());
             executedScripts.pop();
         }
-    }
+    */}
 }

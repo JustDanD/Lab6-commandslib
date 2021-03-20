@@ -15,21 +15,24 @@ import java.util.TreeSet;
  * target - коллекция, с которой взаимодействует команда
  * curCMD - объект окружения, вызвавшего команду
  */
-public abstract class Command implements Serializable {
-    ArrayList<String> arguments;
-    TreeSet<SpaceMarine> target;
-    Cmd curCMD;
+public abstract class Command {
+    protected ArrayList<String> arguments;
+    protected TreeSet<SpaceMarine> target;
+    protected boolean valid;
 
-    public Command(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
+    public Command(String[] args, TreeSet<SpaceMarine> trg) {
         if (args != null) {
             arguments = new ArrayList<>();
             arguments.addAll(Arrays.asList(args));
         }
         if (trg != null)
             target = trg;
-        curCMD = cmd;
+        valid = true;
     }
 
+    public boolean getValid() {
+        return valid;
+    }
     /**
      * Метод, исполяющий команду
      */

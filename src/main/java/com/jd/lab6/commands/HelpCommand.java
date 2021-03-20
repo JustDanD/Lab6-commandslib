@@ -3,15 +3,17 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 
 /**
  * @author Пименов Данила P3130
  * Команда, выводящая подсказку по командам.
  */
-public class HelpCommand extends  Command {
-    public HelpCommand(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
-        super(args, trg, cmd);
+public class HelpCommand extends  Command implements Serializable {
+    private static final long serialVersionUID = 6L;
+    public HelpCommand(String[] args, TreeSet<SpaceMarine> trg) {
+        super(args, trg);
     }
 
     @Override

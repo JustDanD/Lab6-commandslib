@@ -2,6 +2,7 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 
 /**
@@ -9,27 +10,21 @@ import java.util.TreeSet;
  * Команда, добавляющяя элемент, если он меньше всех уже имеющихся
  * Принимает либо JSON, либо пользовательский ввод.
  */
-public class AddMinCommand extends  Command {
-    public AddMinCommand(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
-        super(args, trg, cmd);
+public class AddMinCommand extends  Command implements Serializable {
+    private static final long serialVersionUID = 2L;
+    private final SpaceMarine marineToAdd;
+    public AddMinCommand(String[] args, TreeSet<SpaceMarine> trg) {
+        super(args, trg);
+        marineToAdd = Generators.marineGenerate();
     }
 
 
     @Override
     public void execute() {
-        SpaceMarine newMarine;
-        if (curCMD.getIsInteractive())
-            newMarine =  Generators.marineGenerate();
-        else
-            newMarine =  Generators.marineJSONGenerate(arguments.get(1));
-        if (newMarine == null) {
-            System.out.println("Broken element");
-            return;
-        }
-        if (target.size() == 0 || newMarine.compareTo(target.first()) < 0) {
-            target.add(newMarine);
+        if (target.size() != 0 && marineToAdd.compareTo((SpaceMarine) (target.stream().findFirst()).orElse(null)) < 0) {
+            target.add(marineToAdd);
             System.out.println("Элемент успешно добавлен");
         } else
             System.out.println("Элемент не является наименьшим");
-    }
+       }
 }

@@ -2,30 +2,34 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
+import java.io.Serializable;
 import java.util.TreeSet;
 
 /**
  * @author Пименов Данила P3130
  * Команда удаления элемента коллекции с таким ID.
  */
-public class RemoveCommand extends  Command {
-    public RemoveCommand(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
-        super(args, trg, cmd);
+public class RemoveCommand extends  Command implements Serializable {
+    private static final long serialVersionUID = 11L;
+    private static long id;
+    public RemoveCommand(String[] args, TreeSet<SpaceMarine> trg) {
+        super(args, trg);
+            try {
+                id = Long.parseLong(arguments.get(1));
+            } catch (NumberFormatException e) {
+                System.out.println("Неверный формат ID");
+                valid = false;
+        }
     }
-
 
     @Override
     public void execute() {
         for (SpaceMarine marine : target) {
-            try {
-                if (marine.getId() == Long.parseLong(arguments.get(1))) {
-                    marine.clear();
-                    target.remove(marine);
-                    System.out.println("Элемент успешно удалён");
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Неверный формат ID");
+            if (marine.getId() == id) {
+                marine.clear();
+                target.remove(marine);
+                System.out.println("Элемент успешно удалён");
+                return;
             }
         }
         System.out.println("Элемент c таким ID не существует");

@@ -9,8 +9,8 @@ import java.util.TreeSet;
  * Команда, выполнаяющая выход из программы...Усё. Совсем всё. Уходите.
  */
 public class ExitCommand extends Command {
-    public ExitCommand(String[] args, TreeSet<SpaceMarine> trg, Cmd cmd) {
-        super(args, trg, cmd);
+    public ExitCommand(String[] args, TreeSet<SpaceMarine> trg) {
+        super(args, trg);
     }
 
     @Override
