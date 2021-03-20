@@ -20,6 +20,9 @@ public abstract class Command {
     protected TreeSet<SpaceMarine> target;
     protected boolean valid;
 
+    public Command() {
+
+    }
     public Command(String[] args, TreeSet<SpaceMarine> trg) {
         if (args != null) {
             arguments = new ArrayList<>();
@@ -36,6 +39,6 @@ public abstract class Command {
     /**
      * Метод, исполяющий команду
      */
-    public abstract void execute();
+    public abstract String execute();
 
 }

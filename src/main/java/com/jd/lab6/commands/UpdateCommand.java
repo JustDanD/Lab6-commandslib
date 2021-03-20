@@ -25,7 +25,7 @@ public class UpdateCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
        /* SpaceMarine newMarine;
         if (curCMD.getIsInteractive())
             newMarine = Generators.marineGenerate();
@@ -41,10 +41,10 @@ public class UpdateCommand extends  Command implements Serializable {
                     target.remove(marine);
                     newMarine.setId(Long.parseLong(arguments.get(1)));
                     target.add(newMarine);
-                    System.out.println("Элемент успешно обновлён");
-                    return;
+                    return "Элемент успешно обновлён";
+
                 }
         }
-        System.out.println("Элемент c таким ID не существует");
+        return "Элемент c таким ID не существует";
     }
 }

@@ -16,8 +16,8 @@ public class ClearCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         target.clear();
-        System.out.println("Коллекция успешно очищена");
+        return "Коллекция успешно очищена";
     }
 }

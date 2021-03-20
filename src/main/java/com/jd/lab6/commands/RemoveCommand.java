@@ -23,15 +23,14 @@ public class RemoveCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         for (SpaceMarine marine : target) {
             if (marine.getId() == id) {
                 marine.clear();
                 target.remove(marine);
-                System.out.println("Элемент успешно удалён");
-                return;
+                return  "Элемент успешно удалён";
             }
         }
-        System.out.println("Элемент c таким ID не существует");
+        return "Элемент c таким ID не существует";
     }
 }

@@ -19,7 +19,7 @@ public class RemoveLowerCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         int cnt = 0;
         /*SpaceMarine newMarine;
         if (curCMD.getIsInteractive())
@@ -38,6 +38,6 @@ public class RemoveLowerCommand extends  Command implements Serializable {
                 cnt++;
             }
         }
-        System.out.println("Удалено " + cnt + " элемента(-ов)");
+        return "Удалено " + cnt + " элемента(-ов)";
     }
 }

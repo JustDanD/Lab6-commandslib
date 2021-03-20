@@ -20,11 +20,11 @@ public class AddMinCommand extends  Command implements Serializable {
 
 
     @Override
-    public void execute() {
+    public String execute() {
         if (target.size() != 0 && marineToAdd.compareTo((SpaceMarine) (target.stream().findFirst()).orElse(null)) < 0) {
             target.add(marineToAdd);
-            System.out.println("Элемент успешно добавлен");
+            return "Элемент успешно добавлен";
         } else
-            System.out.println("Элемент не является наименьшим");
+            return "Элемент не является наименьшим";
        }
 }

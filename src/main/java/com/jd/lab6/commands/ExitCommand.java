@@ -14,8 +14,9 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         System.out.println("Спасибо за визит! Хорошо вам провести время!");
         System.exit(0);
+        return null;
     }
 }

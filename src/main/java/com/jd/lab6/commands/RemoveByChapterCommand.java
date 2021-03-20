@@ -19,19 +19,17 @@ public class RemoveByChapterCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
 
         if (chapterToRemove == null) {
-            System.out.println("Битый входной элемент");
-            return;
+            return "Битый входной элемент";
         }
         for (SpaceMarine marine : target) {
             if (marine.getChapter().equals(chapterToRemove)) {
                 target.remove(marine);
-                System.out.println("Элемент успешно удалён");
-                return;
+                return "Элемент успешно удалён";
             }
         }
-        System.out.println("Не существует элемента с таким значением chapter");
+        return "Не существует элемента с таким значением chapter";
     }
 }

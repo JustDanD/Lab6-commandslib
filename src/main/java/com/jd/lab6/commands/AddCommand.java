@@ -19,12 +19,12 @@ public class AddCommand extends Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         if (marineToAdd != null) {
             target.add(marineToAdd);
-            System.out.println("Элемент успешно добавлен");
+            return "Элемент успешно добавлен";
         }
         else
-            System.out.println("Элемент добавить не удалось");
+            return "Элемент добавить не удалось";
     }
 }

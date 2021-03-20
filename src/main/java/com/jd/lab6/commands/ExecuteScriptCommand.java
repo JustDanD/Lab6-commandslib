@@ -25,7 +25,7 @@ public class ExecuteScriptCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
        /* InputStream oldIn = System.in;
         if (arguments.size() < 2) {
             System.out.println("Не указано имя скрипта");
@@ -47,5 +47,6 @@ public class ExecuteScriptCommand extends  Command implements Serializable {
             System.out.println("Ошибка загрузки:" + e.getMessage());
             executedScripts.pop();
         }
-    */}
+    */return "";
+    }
 }

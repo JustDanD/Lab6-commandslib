@@ -17,10 +17,12 @@ public class ShowCommand extends  Command implements Serializable {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
+        StringBuilder ret = new StringBuilder("");
         if (target.size() == 0)
-            System.out.println("Пустая коллекция");
+            return "Пустая коллекция";
         for (SpaceMarine marine : super.target)
-            System.out.print(marine.toString());
+            ret.append(marine.toString());
+        return ret.toString();
     }
 }

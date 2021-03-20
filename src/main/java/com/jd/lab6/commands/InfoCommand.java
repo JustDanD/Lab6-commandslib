@@ -18,9 +18,9 @@ public class InfoCommand extends Command implements Serializable {
     }
 
     @Override
-    public void execute() {
-        System.out.println("Информация о коллекции:\nДата инициалиазции: " +
+    public String execute() {
+        return "Информация о коллекции:\nДата инициалиазции: " +
                 "\nТип коллекции: " + target.getClass() + "\nТип элементов: SpaceMarine" +
-                "\nРазмер коллекции: " + target.size());
+                "\nРазмер коллекции: " + target.size();
     }
 }
