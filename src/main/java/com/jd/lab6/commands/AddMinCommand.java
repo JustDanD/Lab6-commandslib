@@ -13,9 +13,20 @@ import java.util.TreeSet;
 public class AddMinCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 2L;
     private final SpaceMarine marineToAdd;
-    public AddMinCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
-        marineToAdd = Generators.marineGenerate();
+    public AddMinCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
+        if (isInteractive)
+            marineToAdd = Generators.marineGenerate();
+        else {
+            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(1));
+            if (newMarine != null)
+                marineToAdd = newMarine;
+            else {
+                marineToAdd = null;
+                System.out.println("Битый корабль");
+                valid = false;
+            }
+        }
     }
 
 
@@ -27,4 +38,8 @@ public class AddMinCommand extends  Command implements Serializable {
         } else
             return "Элемент не является наименьшим";
        }
+    @Override
+    public String toString() {
+        return "AddMin";
+    }
 }

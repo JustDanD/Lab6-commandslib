@@ -13,9 +13,20 @@ public class UpdateCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 16L;
     private final SpaceMarine newMarine;
     private long id;
-    public UpdateCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
-        newMarine = Generators.marineGenerate();
+    public UpdateCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
+        if (isInteractive)
+            this.newMarine = Generators.marineGenerate();
+        else {
+            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(1));
+            if (newMarine != null)
+                this.newMarine = newMarine;
+            else {
+                this.newMarine = null;
+                System.out.println("Битый корабль");
+                valid = false;
+            }
+        }
         try {
             id = Long.parseLong(arguments.get(1));
         } catch (NumberFormatException e) {
@@ -46,5 +57,8 @@ public class UpdateCommand extends  Command implements Serializable {
                 }
         }
         return "Элемент c таким ID не существует";
+    }
+    public String toString() {
+        return "update";
     }
 }

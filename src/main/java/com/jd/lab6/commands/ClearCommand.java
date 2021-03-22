@@ -11,13 +11,17 @@ import java.util.TreeSet;
  */
 public class ClearCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 4L;
-    public ClearCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public ClearCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
     }
 
     @Override
     public String execute() {
         target.clear();
         return "Коллекция успешно очищена";
+    }
+    @Override
+    public String toString() {
+        return "Clear";
     }
 }

@@ -13,9 +13,21 @@ import java.util.TreeSet;
 public class AddCommand extends Command implements Serializable {
     private static final long serialVersionUID = 1L;
     private final SpaceMarine marineToAdd;
-    public AddCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
-        marineToAdd = Generators.marineGenerate();
+
+    public AddCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
+        if (isInteractive)
+            marineToAdd = Generators.marineGenerate();
+        else {
+            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(1));
+            if (newMarine != null)
+                marineToAdd = newMarine;
+            else {
+                marineToAdd = null;
+                System.out.println("Битый корабль");
+                valid = false;
+            }
+        }
     }
 
     @Override
@@ -26,5 +38,10 @@ public class AddCommand extends Command implements Serializable {
         }
         else
             return "Элемент добавить не удалось";
+    }
+
+    @Override
+    public String toString() {
+        return "Add";
     }
 }

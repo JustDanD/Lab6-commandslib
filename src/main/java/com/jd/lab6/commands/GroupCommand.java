@@ -12,8 +12,8 @@ import java.util.TreeSet;
 public class GroupCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 5L;
 
-    public GroupCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public GroupCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
     }
 
     @Override
@@ -25,5 +25,9 @@ public class GroupCommand extends  Command implements Serializable {
         for (int i = 1; i <= 3; i++)
             ret.append("").append(i).append("-").append(groups[i]);
         return ret.toString();
+    }
+    @Override
+    public String toString() {
+        return "group_counting_by_heart_count";
     }
 }

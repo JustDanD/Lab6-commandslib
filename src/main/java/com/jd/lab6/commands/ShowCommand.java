@@ -12,8 +12,8 @@ import java.util.TreeSet;
 public class ShowCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 14L;
 
-    public ShowCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public ShowCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
     }
 
     @Override
@@ -24,5 +24,8 @@ public class ShowCommand extends  Command implements Serializable {
         for (SpaceMarine marine : super.target)
             ret.append(marine.toString());
         return ret.toString();
+    }
+    public String toString() {
+        return "show";
     }
 }

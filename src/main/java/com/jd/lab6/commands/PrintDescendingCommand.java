@@ -12,8 +12,8 @@ import java.util.TreeSet;
  */
 public class PrintDescendingCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 9L;
-    public PrintDescendingCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public PrintDescendingCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
     }
 
     @Override
@@ -23,5 +23,8 @@ public class PrintDescendingCommand extends  Command implements Serializable {
         for (SpaceMarine marine : descended)
             ret.append(marine.toString());
         return ret.toString();
+    }
+    public String toString() {
+        return "print_descending";
     }
 }

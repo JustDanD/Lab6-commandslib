@@ -12,8 +12,8 @@ import java.util.TreeSet;
 public class RemoveCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 11L;
     private static long id;
-    public RemoveCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public RemoveCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
             try {
                 id = Long.parseLong(arguments.get(1));
             } catch (NumberFormatException e) {
@@ -32,5 +32,8 @@ public class RemoveCommand extends  Command implements Serializable {
             }
         }
         return "Элемент c таким ID не существует";
+    }
+    public String toString() {
+        return "remove_by_id";
     }
 }

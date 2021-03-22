@@ -3,6 +3,7 @@ package com.jd.lab6.commands;
 import com.jd.lab6.data.SpaceMarine;
 
 import java.io.Serializable;
+import java.util.Stack;
 import java.util.TreeSet;
 
 /**
@@ -11,17 +12,24 @@ import java.util.TreeSet;
  */
 public class HistoryCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 7L;
-    public HistoryCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
+    public HistoryCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
     }
 
     @Override
     public String execute() {
-        /*for (int i = 0; i < curCMD.getCommandHistory().size(); i++) {
-            System.out.println(curCMD.getCommandHistory().get(i));
+        return null;
+    }
+    public String execute(Stack<String> history) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < history.size(); i++) {
+            res.append(history.get(i)).append("\n");
             if (i >= 5)
                 break;
-        }*/
-        return "";
+        }
+        return res.toString();
+    }
+    public String toString() {
+        return "history";
     }
 }

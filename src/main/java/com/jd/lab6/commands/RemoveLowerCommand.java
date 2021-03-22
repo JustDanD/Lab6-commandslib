@@ -12,10 +12,21 @@ import java.util.TreeSet;
  */
 public class RemoveLowerCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 13L;
-    private SpaceMarine newMarine;
-    public RemoveLowerCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
-        newMarine = Generators.marineGenerate();
+    private final SpaceMarine newMarine;
+    public RemoveLowerCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
+        if (isInteractive)
+            this.newMarine = Generators.marineGenerate();
+        else {
+            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(1));
+            if (newMarine != null)
+                this.newMarine = newMarine;
+            else {
+                this.newMarine = null;
+                System.out.println("Битый корабль");
+                valid = false;
+            }
+        }
     }
 
     @Override
@@ -39,5 +50,8 @@ public class RemoveLowerCommand extends  Command implements Serializable {
             }
         }
         return "Удалено " + cnt + " элемента(-ов)";
+    }
+    public String toString() {
+        return "remove_lower";
     }
 }

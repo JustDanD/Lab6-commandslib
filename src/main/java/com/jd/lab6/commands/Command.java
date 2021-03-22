@@ -19,11 +19,12 @@ public abstract class Command {
     protected ArrayList<String> arguments;
     protected TreeSet<SpaceMarine> target;
     protected boolean valid;
+    protected boolean isInteractive;
 
     public Command() {
 
     }
-    public Command(String[] args, TreeSet<SpaceMarine> trg) {
+    public Command(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         if (args != null) {
             arguments = new ArrayList<>();
             arguments.addAll(Arrays.asList(args));
@@ -31,11 +32,17 @@ public abstract class Command {
         if (trg != null)
             target = trg;
         valid = true;
+        this.isInteractive = isInteractive;
     }
 
     public boolean getValid() {
         return valid;
     }
+
+    public void setTarget(TreeSet<SpaceMarine> target) {
+        this.target = target;
+    }
+
     /**
      * Метод, исполяющий команду
      */

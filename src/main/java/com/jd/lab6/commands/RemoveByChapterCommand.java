@@ -13,9 +13,20 @@ import java.util.TreeSet;
 public class RemoveByChapterCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 10L;
     private Chapter chapterToRemove;
-    public RemoveByChapterCommand(String[] args, TreeSet<SpaceMarine> trg) {
-        super(args, trg);
-        chapterToRemove = Generators.chapterGenerate();
+    public RemoveByChapterCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
+        super(args, trg, isInteractive);
+        if (isInteractive)
+            chapterToRemove = Generators.chapterGenerate();
+        else {
+            Chapter newChapter = Generators.chapterJSONGenerate(arguments.get(1));
+            if (newChapter != null)
+                chapterToRemove = newChapter;
+            else {
+                valid = false;
+                chapterToRemove = null;
+                System.out.println("Битая глава");
+            }
+        }
     }
 
     @Override
@@ -31,5 +42,8 @@ public class RemoveByChapterCommand extends  Command implements Serializable {
             }
         }
         return "Не существует элемента с таким значением chapter";
+    }
+    public String toString() {
+        return "remove_any_by_chapter";
     }
 }
