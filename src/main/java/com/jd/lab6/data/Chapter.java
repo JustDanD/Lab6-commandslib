@@ -14,13 +14,15 @@ public class Chapter implements Serializable {
 
     /**
      * Констурктор
-     * @param name - название части
+     *
+     * @param name         - название части
      * @param parentLegion - родительское подразделение
      */
     public Chapter(String name, String parentLegion) {
         this.name = name;
         this.parentLegion = parentLegion;
     }
+
     /**
      * Переопределние ToString
      */

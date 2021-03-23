@@ -32,13 +32,14 @@ public class SpaceMarine implements Comparable<SpaceMarine>, Serializable {
 
     /**
      * Конструктор
-     * @param name - имя корабля
+     *
+     * @param name        - имя корабля
      * @param coordinates - объект координат
-     * @param health - количество здорвоья
-     * @param heartCount - количество жизней
-     * @param loyal - лояльность
+     * @param health      - количество здорвоья
+     * @param heartCount  - количество жизней
+     * @param loyal       - лояльность
      * @param meleeWeapon - оружие
-     * @param chapter - часть
+     * @param chapter     - часть
      */
     public SpaceMarine(String name, Coordinates coordinates, Double health, long heartCount, boolean loyal, MeleeWeapon meleeWeapon, Chapter chapter) {
         if (idStack == null)

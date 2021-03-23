@@ -9,8 +9,9 @@ import java.util.TreeSet;
  * @author Пименов Данила
  * Команда, очищающая коллекцию. Собсвтенно всё.
  */
-public class ClearCommand extends  Command implements Serializable {
+public class ClearCommand extends Command implements Serializable {
     private static final long serialVersionUID = 4L;
+
     public ClearCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
     }
@@ -20,6 +21,7 @@ public class ClearCommand extends  Command implements Serializable {
         target.clear();
         return "Коллекция успешно очищена";
     }
+
     @Override
     public String toString() {
         return "Clear";

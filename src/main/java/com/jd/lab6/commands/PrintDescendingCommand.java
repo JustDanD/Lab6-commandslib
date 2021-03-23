@@ -10,8 +10,9 @@ import java.util.TreeSet;
  * @author Пименов Данила P3130
  * Команда, выводящая коллекцию в порядке убывания
  */
-public class PrintDescendingCommand extends  Command implements Serializable {
+public class PrintDescendingCommand extends Command implements Serializable {
     private static final long serialVersionUID = 9L;
+
     public PrintDescendingCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
     }
@@ -20,9 +21,10 @@ public class PrintDescendingCommand extends  Command implements Serializable {
     public String execute() {
         NavigableSet<SpaceMarine> descended = target.descendingSet();
         StringBuilder ret = new StringBuilder();
-        descended.stream().forEach(x->ret.append(x));
+        descended.stream().forEach(x -> ret.append(x));
         return ret.toString();
     }
+
     public String toString() {
         return "print_descending";
     }

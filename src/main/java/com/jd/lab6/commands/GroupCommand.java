@@ -9,7 +9,7 @@ import java.util.TreeSet;
  * @author Пименов Данила P3130
  * Команда группировки по значению heartCount
  */
-public class GroupCommand extends  Command implements Serializable {
+public class GroupCommand extends Command implements Serializable {
     private static final long serialVersionUID = 5L;
 
     public GroupCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
@@ -27,6 +27,7 @@ public class GroupCommand extends  Command implements Serializable {
             ret.append(i).append("-").append(groups[i - 1]).append("\n");
         return ret.toString();
     }
+
     @Override
     public String toString() {
         return "group_counting_by_heart_count";

@@ -36,8 +36,7 @@ public class AddCommand extends Command implements Serializable {
             marineToAdd.setId(marineToAdd.getId());
             target.add(marineToAdd);
             return "Элемент успешно добавлен";
-        }
-        else
+        } else
             return "Элемент добавить не удалось";
     }
 

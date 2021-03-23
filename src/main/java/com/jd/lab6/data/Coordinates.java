@@ -41,6 +41,7 @@ public class Coordinates implements Comparable<Coordinates>, Serializable {
 
     /**
      * Сравнение объектов по сумме координат.
+     *
      * @param coordinates - объект для сравнения
      */
     @Override

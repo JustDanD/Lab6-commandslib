@@ -2,7 +2,10 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -86,14 +89,14 @@ public class ExecuteScriptCommand extends Command implements Serializable {
 
     @Override
     public String execute() {
-       StringBuilder res = new StringBuilder();
-       while (!commandsQueue.isEmpty()) {
-           Command currentCommand = commandsQueue.remove();
-           currentCommand.setTarget(this.target);
-           res.append(currentCommand.execute()).append("\n");
-       }
-       res.append("Выполнение скрипта завершено");
-       return res.toString();
+        StringBuilder res = new StringBuilder();
+        while (!commandsQueue.isEmpty()) {
+            Command currentCommand = commandsQueue.remove();
+            currentCommand.setTarget(this.target);
+            res.append(currentCommand.execute()).append("\n");
+        }
+        res.append("Выполнение скрипта завершено");
+        return res.toString();
     }
 
     @Override

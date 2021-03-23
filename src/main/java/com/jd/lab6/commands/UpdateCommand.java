@@ -9,10 +9,11 @@ import java.util.TreeSet;
  * @author Пименов Данила P3130
  * Команда, обновляющая элемент с заданым id
  */
-public class UpdateCommand extends  Command implements Serializable {
+public class UpdateCommand extends Command implements Serializable {
     private static final long serialVersionUID = 16L;
     private final SpaceMarine newMarine;
     private long id;
+
     public UpdateCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
         if (isInteractive)
@@ -47,6 +48,7 @@ public class UpdateCommand extends  Command implements Serializable {
         }
         return "Элемент c таким ID не существует";
     }
+
     public String toString() {
         return "update";
     }

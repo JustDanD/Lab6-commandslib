@@ -9,7 +9,7 @@ import java.util.TreeSet;
  * @author Пименов Данила P3130
  * Команда, выводящая на экран коллекцию.
  */
-public class ShowCommand extends  Command implements Serializable {
+public class ShowCommand extends Command implements Serializable {
     private static final long serialVersionUID = 14L;
 
     public ShowCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
@@ -25,6 +25,7 @@ public class ShowCommand extends  Command implements Serializable {
             ret.append(marine.toString());
         return ret.toString();
     }
+
     public String toString() {
         return "show";
     }

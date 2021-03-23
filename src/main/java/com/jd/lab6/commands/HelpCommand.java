@@ -10,11 +10,12 @@ import java.util.TreeSet;
  * @author Пименов Данила P3130
  * Команда, выводящая подсказку по командам.
  */
-public class HelpCommand extends  Command implements Serializable {
+public class HelpCommand extends Command implements Serializable {
     private static final long serialVersionUID = 6L;
 
     public HelpCommand() {
     }
+
     public HelpCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
     }
@@ -28,6 +29,7 @@ public class HelpCommand extends  Command implements Serializable {
                 "group_counting_by_heart_count - сгруппировать элементы коллекции по значению поля heartCount, вывести количество элементов в каждой группе\n" +
                 "print_descending - вывести элементы коллекции в порядке убывания";
     }
+
     public String toString() {
         return "help";
     }

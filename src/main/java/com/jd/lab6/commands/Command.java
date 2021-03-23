@@ -2,7 +2,6 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TreeSet;
@@ -24,6 +23,7 @@ public abstract class Command {
     public Command() {
 
     }
+
     public Command(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         if (args != null) {
             arguments = new ArrayList<>();

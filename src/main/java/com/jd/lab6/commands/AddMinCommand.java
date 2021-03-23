@@ -10,9 +10,10 @@ import java.util.TreeSet;
  * Команда, добавляющяя элемент, если он меньше всех уже имеющихся
  * Принимает либо JSON, либо пользовательский ввод.
  */
-public class AddMinCommand extends  Command implements Serializable {
+public class AddMinCommand extends Command implements Serializable {
     private static final long serialVersionUID = 2L;
     private final SpaceMarine marineToAdd;
+
     public AddMinCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
         if (isInteractive)
@@ -38,7 +39,8 @@ public class AddMinCommand extends  Command implements Serializable {
             return "Элемент успешно добавлен";
         } else
             return "Элемент не является наименьшим";
-       }
+    }
+
     @Override
     public String toString() {
         return "AddMin";

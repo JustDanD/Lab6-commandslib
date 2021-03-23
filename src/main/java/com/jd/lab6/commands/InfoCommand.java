@@ -3,7 +3,6 @@ package com.jd.lab6.commands;
 import com.jd.lab6.data.SpaceMarine;
 
 import java.io.Serializable;
-import java.time.format.DateTimeFormatter;
 import java.util.TreeSet;
 
 /**
@@ -23,6 +22,7 @@ public class InfoCommand extends Command implements Serializable {
                 "\nТип коллекции: " + target.getClass() + "\nТип элементов: SpaceMarine" +
                 "\nРазмер коллекции: " + target.size();
     }
+
     public String toString() {
         return "info";
     }
