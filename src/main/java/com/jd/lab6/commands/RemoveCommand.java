@@ -11,7 +11,7 @@ import java.util.TreeSet;
  */
 public class RemoveCommand extends  Command implements Serializable {
     private static final long serialVersionUID = 11L;
-    private static long id;
+    private  long id;
     public RemoveCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
             try {
@@ -24,12 +24,11 @@ public class RemoveCommand extends  Command implements Serializable {
 
     @Override
     public synchronized String execute() {
-        for (SpaceMarine marine : target) {
-            if (marine.getId() == id) {
-                marine.clear();
-                target.remove(marine);
-                return  "Элемент успешно удалён";
-            }
+        SpaceMarine marine = target.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+        if (marine != null) {
+            marine.clear();
+            target.remove(marine);
+            return  "Элемент успешно удалён";
         }
         return "Элемент c таким ID не существует";
     }

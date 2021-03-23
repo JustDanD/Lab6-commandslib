@@ -4,6 +4,7 @@ import com.jd.lab6.data.Chapter;
 import com.jd.lab6.data.SpaceMarine;
 
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.TreeSet;
 
 /**
@@ -35,11 +36,11 @@ public class RemoveByChapterCommand extends  Command implements Serializable {
         if (chapterToRemove == null) {
             return "Битый входной элемент";
         }
-        for (SpaceMarine marine : target) {
-            if (marine.getChapter().equals(chapterToRemove)) {
-                target.remove(marine);
-                return "Элемент успешно удалён";
-            }
+        SpaceMarine marine = target.stream().filter(x->x.getChapter().equals(chapterToRemove)).findFirst().orElse(null);
+        if (marine != null) {
+            marine.clear();
+            target.remove(marine);
+            System.out.println("Элемент успешно удалён");
         }
         return "Не существует элемента с таким значением chapter";
     }

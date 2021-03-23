@@ -18,12 +18,13 @@ public class GroupCommand extends  Command implements Serializable {
 
     @Override
     public String execute() {
-        int[] groups = new int[4];
+        long[] groups = new long[3];
         StringBuilder ret = new StringBuilder();
-        for (SpaceMarine marine : target)
-            groups[(int) (marine.getHeartCount())]++;
+        groups[0] = target.stream().filter(x -> x.getHeartCount() == 1).count();
+        groups[1] = target.stream().filter(x -> x.getHeartCount() == 2).count();
+        groups[2] = target.stream().filter(x -> x.getHeartCount() == 3).count();
         for (int i = 1; i <= 3; i++)
-            ret.append("").append(i).append("-").append(groups[i]);
+            ret.append(i).append("-").append(groups[i - 1]).append("\n");
         return ret.toString();
     }
     @Override

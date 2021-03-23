@@ -32,22 +32,11 @@ public class RemoveLowerCommand extends  Command implements Serializable {
     @Override
     public synchronized String execute() {
         int cnt = 0;
-        /*SpaceMarine newMarine;
-        if (curCMD.getIsInteractive())
-            newMarine = Generators.marineGenerate();
-        else
-            newMarine = Generators.marineJSONGenerate(arguments.get(1));
-        if (newMarine == null) {
-            System.out.println("Broken element");
-            return;
-        }*/
-        Iterator<SpaceMarine> iterator = target.iterator();
-        while (iterator.hasNext()) {
-            SpaceMarine elem = iterator.next();
-            if (newMarine.compareTo(elem) > 0) {
-                iterator.remove();
-                cnt++;
-            }
+        SpaceMarine[] marines = (SpaceMarine[]) target.stream().filter(x -> newMarine.compareTo(x) > 0).toArray();
+        for (SpaceMarine marine : marines) {
+            marine.clear();
+            target.remove(marine);
+            cnt++;
         }
         return "Удалено " + cnt + " элемента(-ов)";
     }

@@ -18,7 +18,7 @@ public class UpdateCommand extends  Command implements Serializable {
         if (isInteractive)
             this.newMarine = Generators.marineGenerate();
         else {
-            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(1));
+            SpaceMarine newMarine = Generators.marineJSONGenerate(arguments.get(2));
             if (newMarine != null)
                 this.newMarine = newMarine;
             else {
@@ -37,24 +37,13 @@ public class UpdateCommand extends  Command implements Serializable {
 
     @Override
     public synchronized String execute() {
-       /* SpaceMarine newMarine;
-        if (curCMD.getIsInteractive())
-            newMarine = Generators.marineGenerate();
-        else
-            newMarine = Generators.marineJSONGenerate(arguments.get(2));
-        if (newMarine == null) {
-            System.out.println("Broken element");
-            return;
-        }*/
-        for (SpaceMarine marine : target) {
-                if (marine.getId() == id) {
-                    marine.clear();
-                    target.remove(marine);
-                    newMarine.setId(Long.parseLong(arguments.get(1)));
-                    target.add(newMarine);
-                    return "Элемент успешно обновлён";
-
-                }
+        SpaceMarine marine = target.stream().filter(x -> x.getId() == id).findFirst().orElse(null);
+        if (marine != null) {
+            marine.clear();
+            target.remove(marine);
+            newMarine.setId(Long.parseLong(arguments.get(1)));
+            target.add(newMarine);
+            return "Элемент успешно обновлён";
         }
         return "Элемент c таким ID не существует";
     }

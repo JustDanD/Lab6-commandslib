@@ -22,11 +22,7 @@ public class HistoryCommand extends  Command implements Serializable {
     }
     public String execute(Stack<String> history) {
         StringBuilder res = new StringBuilder();
-        for (int i = 0; i < history.size(); i++) {
-            res.append(history.get(i)).append("\n");
-            if (i >= 5)
-                break;
-        }
+        history.stream().limit(5).forEach(x -> res.append(x).append("\n"));
         return res.toString();
     }
     public String toString() {

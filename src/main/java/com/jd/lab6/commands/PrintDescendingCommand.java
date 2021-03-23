@@ -20,8 +20,7 @@ public class PrintDescendingCommand extends  Command implements Serializable {
     public String execute() {
         NavigableSet<SpaceMarine> descended = target.descendingSet();
         StringBuilder ret = new StringBuilder();
-        for (SpaceMarine marine : descended)
-            ret.append(marine.toString());
+        descended.stream().forEach(x->ret.append(x));
         return ret.toString();
     }
     public String toString() {
