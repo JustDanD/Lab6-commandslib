@@ -30,7 +30,7 @@ public class RemoveByChapterCommand extends  Command implements Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
 
         if (chapterToRemove == null) {
             return "Битый входной элемент";

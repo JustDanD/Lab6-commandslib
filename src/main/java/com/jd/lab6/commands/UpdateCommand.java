@@ -36,7 +36,7 @@ public class UpdateCommand extends  Command implements Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
        /* SpaceMarine newMarine;
         if (curCMD.getIsInteractive())
             newMarine = Generators.marineGenerate();

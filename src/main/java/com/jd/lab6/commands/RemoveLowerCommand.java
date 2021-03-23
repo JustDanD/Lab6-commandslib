@@ -30,7 +30,7 @@ public class RemoveLowerCommand extends  Command implements Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
         int cnt = 0;
         /*SpaceMarine newMarine;
         if (curCMD.getIsInteractive())

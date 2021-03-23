@@ -31,7 +31,7 @@ public class AddCommand extends Command implements Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
         if (marineToAdd != null) {
             target.add(marineToAdd);
             return "Элемент успешно добавлен";

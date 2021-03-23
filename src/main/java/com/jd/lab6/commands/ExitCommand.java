@@ -9,7 +9,7 @@ import java.util.TreeSet;
  * Команда, выполнаяющая выход из программы...Усё. Совсем всё. Уходите.
  */
 public class ExitCommand extends Command {
-    public ExitCommand(String[] args, TreeSet<SpaceMarine> trg) {
+    public ExitCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isScript) {
         super(args, trg, true);
     }
 

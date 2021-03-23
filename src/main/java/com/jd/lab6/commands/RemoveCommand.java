@@ -23,7 +23,7 @@ public class RemoveCommand extends  Command implements Serializable {
     }
 
     @Override
-    public String execute() {
+    public synchronized String execute() {
         for (SpaceMarine marine : target) {
             if (marine.getId() == id) {
                 marine.clear();
