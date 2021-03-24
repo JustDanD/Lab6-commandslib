@@ -18,7 +18,7 @@ public class ShowCommand extends Command implements Serializable {
 
     @Override
     public String execute() {
-        StringBuilder ret = new StringBuilder("");
+        StringBuilder ret = new StringBuilder();
         if (target.size() == 0)
             return "Пустая коллекция";
         for (SpaceMarine marine : super.target)

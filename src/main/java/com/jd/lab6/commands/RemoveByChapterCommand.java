@@ -12,7 +12,7 @@ import java.util.TreeSet;
  */
 public class RemoveByChapterCommand extends Command implements Serializable {
     private static final long serialVersionUID = 10L;
-    private Chapter chapterToRemove;
+    private final Chapter chapterToRemove;
 
     public RemoveByChapterCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);

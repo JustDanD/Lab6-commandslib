@@ -13,9 +13,6 @@ import java.util.TreeSet;
 public class HelpCommand extends Command implements Serializable {
     private static final long serialVersionUID = 6L;
 
-    public HelpCommand() {
-    }
-
     public HelpCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
     }

@@ -2,10 +2,7 @@ package com.jd.lab6.commands;
 
 import com.jd.lab6.data.SpaceMarine;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -16,7 +13,7 @@ import java.util.*;
 public class ExecuteScriptCommand extends Command implements Serializable {
     private static Stack<String> executedScripts;
     private static final long serialVersionUID = 3L;
-    private ArrayDeque<Command> commandsQueue;
+    private final ArrayDeque<Command> commandsQueue;
 
     public ExecuteScriptCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isInteractive) {
         super(args, trg, isInteractive);
@@ -35,7 +32,23 @@ public class ExecuteScriptCommand extends Command implements Serializable {
             return;
         } else
             executedScripts.push(arguments.get(1));
-        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(arguments.get(1)))) {
+        File file = new File(arguments.get(1));
+        if (!file.exists()) {
+            System.out.println("Такого файла нет!");
+            valid = false;
+            return;
+        }
+        if (file.isDirectory()) {
+            System.out.println("Не умею читать из директории(");
+            valid = false;
+            return;
+        }
+        if (!file.isFile()) {
+            System.out.println("Это плохой, вероятно, страшный и служебный файл)");
+            valid = false;
+            return;
+        }
+        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(file))) {
             System.setIn(in);
             loadScript();
             executedScripts.pop();
@@ -66,7 +79,7 @@ public class ExecuteScriptCommand extends Command implements Serializable {
         commandsMap.put("execute_script", ExecuteScriptCommand.class);
 
         Scanner in = new Scanner(System.in);
-        String curCom = "";
+        String curCom;
         String[] curArgs;
         Class[] params = {String[].class, TreeSet.class, boolean.class};
         while (true) {

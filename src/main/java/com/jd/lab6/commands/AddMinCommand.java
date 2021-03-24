@@ -33,7 +33,7 @@ public class AddMinCommand extends Command implements Serializable {
 
     @Override
     public synchronized String execute() {
-        if (target.size() != 0 && marineToAdd.compareTo((SpaceMarine) (target.stream().findFirst()).orElse(null)) < 0) {
+        if (target.size() != 0 && marineToAdd.compareTo((target.stream().findFirst()).orElse(null)) < 0) {
             marineToAdd.setId(marineToAdd.getId());
             target.add(marineToAdd);
             return "Элемент успешно добавлен";

@@ -10,7 +10,7 @@ import java.util.TreeSet;
  */
 public class ExitCommand extends Command {
     public ExitCommand(String[] args, TreeSet<SpaceMarine> trg, boolean isScript) {
-        super(args, trg, true);
+        super(args, trg, isScript);
     }
 
     @Override
